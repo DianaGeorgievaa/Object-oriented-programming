@@ -39,11 +39,11 @@ void Bank::SetAddress(const std::string bankAddress)
 }
 void Bank::AddCustomer(int customerId, const std::string customerName, const std::string customerAddress)
 {
-	Customer newCustomer(customerId, customerName, customerAddress);// the new customer
-	this->customers.push_back(newCustomer); // adding the new customer
+	Customer newCustomer(customerId, customerName, customerAddress);
+	this->customers.push_back(newCustomer);
 }
 void Bank::ListCustomers() const
-{   // if there are any customers
+{   
 	if (this->customers.size() > 0)
 	{
 		for (int i = 0; i < this->customers.size(); i++)
@@ -57,20 +57,20 @@ void Bank::ListCustomers() const
 	}
 }
 void Bank::DeleteCustomer(int customerId)
-{   // if there are any customers
+{   
 	if (this->customers.size() > 0)
 	{
 		for (int i = 0; i < this->customers.size(); i++)
-		{   // if the customer is with the same Id
+		{   
 			if (this->customers[i].GetId() == customerId)
-			{  // deleting the customer
+			{  
 				DeleteCustomerAccounts(customerId);
 				this->customers.erase(this->customers.begin() + i);
 			}
 		}
 	}
 	else
-	{   // if there are no customers
+	{  
 		std::cout << "There are no customers in the Bank!" << std::endl;
 	}
 }
@@ -79,7 +79,7 @@ void Bank::AddAccount(const std::string type, const  std::string iban, int owner
 	bool isExsistId = false;
 	bool isExsistIBAN = false;
 	for (int i = 0; i < this->customers.size(); i++)
-	{   // if the acount is with the same Id or iban
+	{   
 		if (this->customers[i].GetId() == ownerId)
 		{
 			isExsistId = true;
@@ -97,7 +97,7 @@ void Bank::AddAccount(const std::string type, const  std::string iban, int owner
 	if (isExsistId == true && isExsistIBAN == false)
 	{
 		if (type == "current")
-		{   // adding new current account
+		{   
 			this->accounts.push_back(new CurrentAccount(iban, ownerId, amount));
 		}
 		else if (type == "privilege")
@@ -105,7 +105,6 @@ void Bank::AddAccount(const std::string type, const  std::string iban, int owner
 			double overdraft;
 			std::cout << "Overdraft: ";
 			std::cin >> overdraft;
-			//adding new privilege account
 			this->accounts.push_back(new PrivilegeAccount(iban, ownerId, amount, overdraft));
 		}
 		else
@@ -113,7 +112,6 @@ void Bank::AddAccount(const std::string type, const  std::string iban, int owner
 			double interestRate;
 			std::cout << "Interestrate:";
 			std::cin >> interestRate;
-			//adding new saving account
 			this->accounts.push_back(new SavingsAccount(iban, ownerId, amount, interestRate));
 		}
 	}
@@ -128,9 +126,9 @@ void Bank::DeleteAccount(const std::string iban)
 	if (this->accounts.size() > 0)
 	{
 		for (int i = 0; i < this->accounts.size(); i++)
-		{  // if the account is with the same iban
+		{ 
 			if (this->accounts[i]->GetIban() != iban)
-			{   // delete the account
+			{   
 				newAccount.push_back(this->accounts[i]->Clone());
 			}
 		}
@@ -161,7 +159,7 @@ void Bank::ListCustomerAccount(int customerId) const
 	if (this->accounts.size() > 0)
 	{
 		for (int i = 0; i < this->accounts.size(); i++)
-		{   // if the id of the owner is the same with the id of the customer
+		{   
 			if (this->accounts[i]->GetOwnerId() == customerId)
 			{
 				this->accounts[i]->Display();
@@ -178,7 +176,7 @@ void Bank::Transfer(const std::string fromIBAN, const  std::string toIBAN, doubl
 	int first = 0;
 	int second = 0;
 	for (int i = 0; i < this->accounts.size(); i++)
-	{   // if the iban is the same with the iban that we want to transfer from
+	{   
 		if (this->accounts[i]->GetIban() == fromIBAN)
 		{
 			first = i;
@@ -188,7 +186,7 @@ void Bank::Transfer(const std::string fromIBAN, const  std::string toIBAN, doubl
 			second = i;
 		}
 	}
-	// if it is possible to make the transfer
+	
 	if (this->accounts[first]->GetBalance() - amount >= 0)
 	{
 		this->accounts[second]->Deposit(amount);
@@ -251,9 +249,9 @@ void Bank::DeleteCustomerAccounts(int id)
 	if (this->accounts.size() > 0)
 	{
 		for (int i = 0; i < this->accounts.size(); i++)
-		{  // if the account is with the same iban
+		{  
 			if (this->accounts[i]->GetOwnerId() != id)
-			{   // delete the account
+			{   
 				newAccount.push_back(this->accounts[i]->Clone());
 			}
 		}
