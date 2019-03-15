@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Store.h"
-//constructor without arguments
 Store::Store()
 {
 	this->size = MAX_PRODUCTS;
@@ -9,18 +8,18 @@ Store::Store()
 }
 
 Store::~Store()
-{   // delite the allocated memory
+{   
 	delete[] this->product;
 }
 
 void Store::Add(Product p)
-{  // if there is space for new product
+{  
 	if (this->productCount < this->size - 1)
-	{   // add the new product
+	{   
 		product[productCount] = p;
 		productCount++;
 	}
-	// if there is not space for new products
+	
 	else
 	{
 		std::cout << "The store is full! Can't add any products!" << std::endl;
@@ -31,9 +30,9 @@ void Store::Add(Product p)
 void Store::Change(const char * SKU)
 {
 	for (int i = 0; i < this->productCount; i++)
-	{   // if the product you want to change is the same
+	{   
 		if (strcmp(this->product[i].GetSKU(), SKU) == 0)
-		{   //change the product
+		{   
 			this->product[i].Change();
 			break;
 		}
@@ -58,7 +57,7 @@ void Store::DeleteProduct(const char * SKU)
 {
 	unsigned int i = 0;
 	unsigned int ind = 0;
-	Product *saveProduct = new Product[productCount - 1];// new dynamic array for the products, without the one we delite
+	Product *saveProduct = new Product[productCount - 1];
 	while (i < this->productCount - 1)
 	{    
 		if (this->product[i].GetSKU() != SKU)
@@ -69,5 +68,4 @@ void Store::DeleteProduct(const char * SKU)
 		i++;
 	}
 	this->product = saveProduct;
-	this->productCount--; // the number of the products is smaller with 1
-}
+	this->productCount--; 
