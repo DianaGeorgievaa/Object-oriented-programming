@@ -21,7 +21,7 @@ public:
 	ElectricNet& operator++(int);//postfix
 	ElectricNet& operator--();//prefix,reduce the power
 	ElectricNet& operator--(int);//postfix
-	ElectricDevice operator[](const char* name);// access to device by its name
+	ElectricDevice operator[](const char* name);
 	~ElectricNet();
 private:
 	void Resize();
