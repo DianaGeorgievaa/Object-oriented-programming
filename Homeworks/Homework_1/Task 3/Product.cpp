@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Product.h"
 
-//constructor with no arguments
 Product::Product() :count(0), price(0.0)
 {
 	this->SetSKU("no SKU");
@@ -9,7 +8,7 @@ Product::Product() :count(0), price(0.0)
 	this->SetModel("no model");
 	this->SetColor("no color");
 }
-//constructor with arguments
+
 Product::Product(const char * SKU, const char * brand, const char * model, const char * color, double price, int count)
 {
 	this->SetSKU(SKU);
@@ -21,7 +20,7 @@ Product::Product(const char * SKU, const char * brand, const char * model, const
 }
 
 void Product::SetSKU(const char * SKU)
-{   // l is variable for the length of the SKU
+{   
 	int l = strlen(SKU);
 	this->SKU = new char[l + 1];
 	int i = 0;
