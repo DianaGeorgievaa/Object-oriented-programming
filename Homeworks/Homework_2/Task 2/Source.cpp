@@ -16,7 +16,7 @@ int main()
 
 	int y = 0;
 	std::cout << "If there is a pair with the same key prints 1 else prints 0: ";
-	std::cout<<setting.Get("key1", y) << std::endl;// if there is key with name "key1" print its value 
+	std::cout<<setting.Get("key1", y) << std::endl;
 	std::cout << "There is a pair with this key and its value is: " << y << std::endl;
 	std::cout << std::endl;
 	int y1 = 0;
