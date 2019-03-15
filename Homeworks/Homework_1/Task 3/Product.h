@@ -1,7 +1,7 @@
 #ifndef PRODUCT_H
 #define PRODUCT_H
 
-class Product //for laptops
+class Product 
 {
 public:
 
