@@ -21,7 +21,6 @@ bool CurrentAccount::Withdraw(double sum)
 		return false;
 	}
 	else
-		// if it is possible to withdraw
 	{
 		this->SetAmount(this->GetBalance() - sum);
 		return true;
