@@ -10,5 +10,5 @@ public:
 	Car(const Car& other);
 	Car &operator=(const Car& other);
 	~Car();
-	virtual void Details()const;//print
+	virtual void Details()const;
 };
