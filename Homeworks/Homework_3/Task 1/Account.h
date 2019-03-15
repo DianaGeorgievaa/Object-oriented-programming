@@ -18,7 +18,7 @@ public:
 	virtual void Deposit(double sum) = 0;
 	virtual bool Withdraw(double sum) = 0;
 	virtual void Display()const = 0;
-	virtual Account *Clone() = 0; //virtual copy constructor
+	virtual Account *Clone() = 0; 
 	virtual ~Account();
 private:
 	std::string iban;
