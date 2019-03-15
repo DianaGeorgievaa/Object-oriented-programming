@@ -1,6 +1,6 @@
 #pragma once
 
-class Vehicle //abstract base class
+class Vehicle
 {
 public:
 	Vehicle();
