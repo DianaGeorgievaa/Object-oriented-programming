@@ -3,7 +3,7 @@
 
 Stack::Stack()
 {
-	top = -1;// for empty stack
+	top = -1;
 	size = MAX_LENGTH;
 	array = new double[size];
 
@@ -37,12 +37,12 @@ void Stack::grow()
 	size = size * 2;
 }
 Stack::~Stack()
-{ // delites the allocated memory
+{ 
 	delete[]array;
 }
 bool Stack::IsStackEmpty()const
 {
-	return top == -1; // empty stack
+	return top == -1; 
 }
 double Stack::peek()const
 {
@@ -56,7 +56,7 @@ double Stack::peek()const
 
 }
 void Stack::push(double y)
-{   // if the stack is full 
+{  
 	if (IsStackFull())
 	{
 		grow();
@@ -82,5 +82,5 @@ double Stack::pop()
 }
 int Stack::length()const
 {
-	return top; // the index of the last element in the stack
+	return top; 
 }
