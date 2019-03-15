@@ -112,23 +112,23 @@ ElectricNet& ElectricNet::operator+=(const ElectricDevice & device)
 	}
 	sumPower += device.GetPower();
 	if (sumPower <= maxConsumation)
-	{  // if there isn't enough space
+	{  
 		if (this->numberOfElectricDevices + 1 >= maxLength)
 		{
 			Resize();
 		}
-		this->electricDevice[numberOfElectricDevices] = device;// add the device
-		this->numberOfElectricDevices++;// the number of the devices in the net ++
+		this->electricDevice[numberOfElectricDevices] = device;
+		this->numberOfElectricDevices++;
 	}
 	else
-	{   // the device can't be added because of the power
+	{  
 		std::cout << "The electric device can't be added!" << std::endl;
 	}
 	return *this;
 }
 
 ElectricNet ElectricNet::operator-(const char * name)
-{  // if the net is not empty
+{  
 	if (this->numberOfElectricDevices - 1 >= 0)
 	{
 		ElectricNet e(this->GetMaxConsumation());
@@ -201,7 +201,7 @@ ElectricNet&  ElectricNet::operator-=(const char * name)
 }
 
 bool ElectricNet::operator!()
-{  // if the net is not empty
+{  
 	if (this->numberOfElectricDevices - 1 >= 0)
 	{
 		return true;
@@ -210,7 +210,7 @@ bool ElectricNet::operator!()
 }
 
 ElectricNet& ElectricNet::operator++()
-{  // the max consumation * 2
+{  
 	this->SetMaxConsumation(this->GetMaxConsumation() * 2);
 	return *this;
 }
@@ -276,7 +276,7 @@ ElectricDevice ElectricNet::operator[](const char * name)
 	{
 		std::cout << "Can not find device by name: " << name << std::endl;
 	}
-	return ElectricDevice(); // return empty device
+	return ElectricDevice(); 
 }
 
 void ElectricNet::Resize()
