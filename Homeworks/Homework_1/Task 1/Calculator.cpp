@@ -1,28 +1,23 @@
 #include <iostream>
 #include "Stack.h"
 
-// const variable for the operations
 const int NUMBER_OPERATORS = 5;
 const char math_operators[NUMBER_OPERATORS] = { '-', '+', '/', '*', '%' };
-// function that calculates the expression
 double calculate(char* math_expression);
-// checks if one symbol in the expression is a number
 bool CheckForNumber(char* number);
-//current position in expression
 int currentIndex = 0;
-// get number from expression
 char* ReturnNumber(char *mathExpr);
 
 int main()
 {
-	char math_expression[MAX_LENGTH]; // in RPN
+	char math_expression[MAX_LENGTH]; 
 	std::cout << "Please,enter an expression in Reversed Polish Notation:" << std::endl;
 	std::cin.getline(math_expression, MAX_LENGTH);
 	std::cout << "The result of the expression is: " << calculate(math_expression) << std::endl;
 	return 0;
 }
 double calculate(char* math_expression)
-{   // variable for the length of the expression
+{   
 	int math_expression_len = strlen(math_expression);
 
 	char* n = new char[50];
@@ -110,7 +105,7 @@ bool CheckForNumber(char* number)
 {
 	int i = 0;
 	while (i < NUMBER_OPERATORS)
-	{   // if the element is operator
+	{  
 		if (number[0] == math_operators[i])
 		{
 			return false;
@@ -127,8 +122,8 @@ char * ReturnNumber(char *mathExpr)
 	int index = 0;
 	if (len > currentIndex)
 	{
-		for (int i = currentIndex; i < len; i++) // get number or operation from expression
-		{  // if the element is not space
+		for (int i = currentIndex; i < len; i++) 
+		{ 
 			if (mathExpr[i] != ' ')
 			{
 				num[index] = mathExpr[i];
@@ -136,12 +131,10 @@ char * ReturnNumber(char *mathExpr)
 			}
 			else
 			{
-				// we have whitespae in position 'i' so we get the number or operation from 
-				//currentIndex to the len and continue to search next nmber or operation from currentIndex + 1 to length of expression
+				
 				currentIndex = i;
 				break;
 			}
-			// if there are not more elements
 			if (mathExpr[i] == '\0')
 			{
 				currentIndex = len;
@@ -151,4 +144,5 @@ char * ReturnNumber(char *mathExpr)
 	num[index] = 0;
 	currentIndex++;
 	return num;
+}
 }
